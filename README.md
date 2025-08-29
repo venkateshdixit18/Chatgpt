@@ -1,1 +1,91 @@
-# Chatgpt
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Check</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f7f7f7;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Hello there 👋</h2>
+  <div id="question"></div>
+  <div id="buttons"></div>
+  <div class="message" id="message"></div>
+
+  <script>
+    const questionDiv = document.getElementById('question');
+    const buttonsDiv = document.getElementById('buttons');
+    const messageDiv = document.getElementById('message');
+
+    function askName() {
+      questionDiv.textContent = "Is your name Chaitanya?";
+      buttonsDiv.innerHTML = `
+        <button onclick="birthdayCheck(true)">Yes</button>
+        <button onclick="birthdayCheck(false)">No</button>
+      `;
+    }
+
+    function birthdayCheck(isChaitanya) {
+      if (!isChaitanya) {
+        messageDiv.textContent = "Oh! Then this message isn’t for you 😅";
+        buttonsDiv.innerHTML = "";
+        return;
+      }
+      questionDiv.textContent = "Is it your birthday today?";
+      buttonsDiv.innerHTML = `
+        <button onclick="todayBirthday(true)">Yes</button>
+        <button onclick="todayBirthday(false)">No</button>
+      `;
+    }
+
+    function todayBirthday(isToday) {
+      if (isToday) {
+        messageDiv.textContent = "🎉 Happy Birthday, Chaitanya! 🎂🎈";
+        buttonsDiv.innerHTML = "";
+        return;
+      }
+      questionDiv.textContent = "Was it yesterday or is it tomorrow?";
+      buttonsDiv.innerHTML = `
+        <button onclick="belated()">Yesterday</button>
+        <button onclick="advance()">Tomorrow</button>
+      `;
+    }
+
+    function belated() {
+      messageDiv.textContent = "🙏 Belated Happy Birthday, Chaitanya! 🎂";
+      buttonsDiv.innerHTML = "";
+    }
+
+    function advance() {
+      messageDiv.textContent = "🎉 Happy Advance Birthday, Chaitanya! 🎂";
+      buttonsDiv.innerHTML = "";
+    }
+
+    askName();
+  </script>
+</body>
+</html>
